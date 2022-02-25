@@ -10,7 +10,7 @@ def flood_tcp(host: str):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(3)
-        sock.connect((host, 80))
+        sock.connect((host, 443))
         time.sleep(3)
         sock.close()
         connections += 1

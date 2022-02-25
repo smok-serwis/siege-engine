@@ -38,7 +38,8 @@ class DoYourThing(threading.Thread):
 def run():
     global connections
     if len(sys.argv) < 3:
-        print('Correct usage is siege-engine number-of-threads-you-want-to-ping this-website-that-i-dislike.ru')
+        print('Correct usage is python -m siege_engine number-of-threads-you-want-to-ping this-website-that-i-dislike.ru')
+        sys.exit(1)
     amount, hostname = sys.argv[1:]
     print('Pinging %s on %s threads', hostname, amount)
     amount = int(amount)

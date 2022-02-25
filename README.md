@@ -25,6 +25,9 @@ of them).
 Note that increasing thread count about 100% CPU usage is pointless, because of the GIL.
 You can, altogether, fire up multiple instances :D
 
+Note that if zero connections were made, that means the target server is no longer responding,
+which is a good thing.
+
 # Change log
 
 * v1.3: significantly refactored the code

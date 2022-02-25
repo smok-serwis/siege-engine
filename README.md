@@ -11,3 +11,9 @@ Just type:
 pip install git+https://github.com/smok-serwis
 python -m siege_engine 300 tass.com
 ```
+
+Note that a helpful error message will be displayed if you just type:
+
+```bash
+python -m siege_engine
+```

@@ -8,7 +8,7 @@ Installation and operation
 Just type:
 
 ```bash
-pip install git+https://github.com/smok-serwis/siege-engine.git
+pip install siege-engine
 python -m siege_engine 300 tass.com
 ```
 
@@ -24,4 +24,5 @@ of them)
 
 # Change log
 
+* v1.2: since v1.1 we're been hosted on PyPI
 * v1.1: added graceful support for time-out sessions

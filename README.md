@@ -8,7 +8,7 @@ Installation
 Just type:
 
 ```bash
-pip install git+https://github.com/smok-serwis
+pip install git+https://github.com/smok-serwis/siege-engine.git
 python -m siege_engine 300 tass.com
 ```
 

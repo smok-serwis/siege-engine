@@ -49,6 +49,6 @@ def run():
     while True:
         if int(time.time()) != now:
             now = int(time.time())
-            print('Last seconds made', connections, 'calls which involved ', connections*24, 'wasted bytes on the behalf of',
+            print('Last seconds made', connections, 'calls which involved', connections*24, 'wasted bytes on the behalf of',
                   hostname)
             connections = 0

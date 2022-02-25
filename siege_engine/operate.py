@@ -24,7 +24,8 @@ class DoYourThing(threading.Thread):
         super().__init__()
 
     def run(self):
-        flood_tcp(self.hostname)
+        while True:
+            flood_tcp(self.hostname)
 
 
 def run():

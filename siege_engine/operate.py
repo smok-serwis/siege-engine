@@ -2,7 +2,6 @@ import socket
 import threading
 import time
 import sys
-from concurrent.futures import ThreadPoolExecutor
 
 connections = 0
 
@@ -34,7 +33,7 @@ def run():
         print('Correct usage is python -m siege_engine number-of-threads-you-want-to-ping this-website-that-i-dislike.ru')
         sys.exit(1)
     amount, hostname = sys.argv[1:]
-    print('Pinging %s on %s threads', hostname, amount)
+    print('Pinging %s on %s threads' % (hostname, amount))
     amount = int(amount)
     now = (time.time())
     for _ in range(amount):

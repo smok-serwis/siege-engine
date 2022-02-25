@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-setup(version='0.1a1',
+setup(version='1.0',
       entry_points = {
         'my_ep_group_id': [
             'siegeengine = siege_engine.run:run'

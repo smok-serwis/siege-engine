@@ -27,5 +27,6 @@ You can, altogether, fire up multiple instances :D
 
 # Change log
 
-* v1.2: since v1.1 we're been hosted on PyPI
+* v1.3: significantly refactored the code
+* v1.2: since v1.1 we're been hosted on PyPI, removed these nasty entry points
 * v1.1: added graceful support for time-out sessions

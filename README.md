@@ -20,7 +20,10 @@ python -m siege_engine
 
 Please set the 300 value regarding your network conditions. This is the amount of threads
 that will be spawned. Obviously, more is better (I bet your network could hold about 2000
-of them)
+of them).
+
+Note that increasing thread count about 100% CPU usage is pointless, because of the GIL.
+You can, altogether, fire up multiple instances :D
 
 # Change log
 

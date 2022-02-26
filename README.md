@@ -22,7 +22,10 @@ that will be spawned. Obviously, more is better (I bet your network could hold a
 of them).
 
 Note that increasing thread count about 100% CPU usage is pointless, because of the GIL.
-You can, altogether, fire up multiple instances :D
+You can, altogether, fire up multiple instances :D 
+
+Just note that GIL is not a practical limit, I've tested it on my PC with 15k threads and it ate
+only 23% of the CPU, so it's more academic concern.
 
 Note that if zero connections were made, that means the target server is no longer responding,
 which is a good thing.

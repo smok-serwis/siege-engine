@@ -30,8 +30,25 @@ which is a good thing.
 
 # Change log
 
+* v1.7: Removed scapy
+* v1.6: Added scapy
 * v1.5: SSL socket will be picked upon now
 * v1.4: fixed a critical bug
 * v1.3: significantly refactored the code
 * v1.2: since v1.1 we're been hosted on PyPI, removed these nasty entry points
 * v1.1: added graceful support for time-out sessions
+
+## How to adjust thread count.
+
+Start from 13000. If the process manages to hit a single core 100%, start a new program, or just reduce 
+the amount of threads. The process is network-bound.
+
+## Valid targets
+
+* tass.com
+* kremlin.ru
+* eng.putin.kremlin.ru
+* eng.constitution.kremlin.ru
+* eng.flag.kremlin.ru
+* lenta.ru
+* gazeta.ru

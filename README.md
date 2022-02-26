@@ -30,6 +30,7 @@ which is a good thing.
 
 # Change log
 
+* v1.8: fixed problems with termination
 * v1.7: Removed scapy
 * v1.6: Added scapy
 * v1.5: SSL socket will be picked upon now

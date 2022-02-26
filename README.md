@@ -59,9 +59,6 @@ the amount of threads. The process is network-bound.
 * lenta.ru
 * government.ru
 * rt.com
-
-------
-
 * ach.gov.ru
 * customs.ru
 * economy.gov.ru

@@ -54,4 +54,4 @@ the amount of threads. The process is network-bound.
 * eng.constitution.kremlin.ru
 * eng.flag.kremlin.ru
 * lenta.ru
-* gazeta.ru
+* government.ru

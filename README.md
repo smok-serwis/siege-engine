@@ -42,7 +42,7 @@ which is a good thing.
 
 ## How to adjust thread count.
 
-Start from 13000 or even better from 25000. If the process manages to hit a single core 100%, start a new program, or just reduce 
+Start from 13000. If the process manages to hit a single core 100%, start a new program, or just reduce 
 the amount of threads. The process is network-bound.
 
 ## Valid targets

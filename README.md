@@ -30,6 +30,7 @@ which is a good thing.
 
 # Change log
 
+* v1.9: added a total counter for wasted bytes
 * v1.8: fixed problems with termination
 * v1.7: Removed scapy
 * v1.6: Added scapy

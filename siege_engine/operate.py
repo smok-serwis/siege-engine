@@ -44,10 +44,13 @@ def run():
         try:
             if int(time.time()) != now:
                 now = int(time.time())
-                print('Last seconds made', connections, 'calls which involved', connections*24, 'wasted bytes on the behalf of',
-                      hostname)
-                wasted_bytes += connections * 24
-                connections = 0
+                if connections == 0:
+                    print('The target server is down. Let us keep it that way.')
+                else:
+                    print('Last seconds made', connections, 'calls which involved', connections*24, 'wasted bytes on the behalf of',
+                          hostname)
+                    wasted_bytes += connections * 24
+                    connections = 0
         except KeyboardInterrupt:
             print('Good job, you wasted', wasted_bytes, 'bytes of traffic! Good bye and have a nice day!')
             break

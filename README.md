@@ -147,3 +147,7 @@ the amount of threads. The process is network-bound.
 
 
 If you have any better ideas, PRs are welcome!
+
+# Usage via Docker
+
+You can use the excellent Docker image at [https://github.com/maksym-iv/battle-tools#siege-engine](https://github.com/maksym-iv/battle-tools#siege-engine).

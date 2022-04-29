@@ -32,6 +32,7 @@ which is a good thing.
 
 # Change log
 
+* v3.0: Added an option to do UDP flood as well
 * v2.0: Better messages
 * v1.9: added a total counter for wasted bytes
 * v1.8: fixed problems with termination
